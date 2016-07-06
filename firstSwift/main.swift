@@ -281,11 +281,12 @@ for xxx1 in xDataNum {
 
 class MyfirstSwiftClass{
     
-    var m_nSecondMember : Int = 0
+    // 定义三个成员变量
+    var m_nSecondMember : Int = 0       // 定义的时候就初始化了
     var m_nFirstMember : Int
     var m_sName : String
     
-   
+    // 重载init 初始化两个未初始化的成员变量
     init(sName : String, nMember : Int) {
         self.m_sName = sName
         self.m_nFirstMember = nMember
@@ -293,6 +294,7 @@ class MyfirstSwiftClass{
         
     }
     
+    // 析构成员变量
     deinit {
         self.m_nFirstMember = 0
     }
