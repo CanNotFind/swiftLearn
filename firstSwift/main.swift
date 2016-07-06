@@ -277,7 +277,7 @@ for xxx1 in xDataNum {
 // 类的所有成员变量必须初始化，有两种方式
 // 1.在定义的时候初始化，
 // 2.在Init中进行初始化，
-// 3.类没有构造函数，如果要初始化，重载 init ,析构函数为 deinit
+// 3.类没有构造函数，如果要初/Users/wq/Documents/workPos/firstSwift/firstSwift/main.swift始化，重载 init ,析构函数为 deinit
 
 class MyfirstSwiftClass{
     
@@ -288,7 +288,7 @@ class MyfirstSwiftClass{
     
     // 重载init 初始化两个未初始化的成员变量
     init(sName : String, nMember : Int) {
-        self.m_sName = sName
+        self.m_sName = sName                    // self 的功能用于区分传入参数名和成员参数
         self.m_nFirstMember = nMember
         
         
@@ -299,8 +299,47 @@ class MyfirstSwiftClass{
         self.m_nFirstMember = 0
     }
     
+    func getSimpleString() ->String{
+        return "this is return base data "
+    }
+    
    
 }
+
+
+// 创建一个类 ，并且初始化数据 这里传入数据的时候，参数格式为  参数名:参数值
+var t_myfirstclass = MyfirstSwiftClass(sName: "my class", nMember: 6)
+
+
+// 创建一个类并且继承另一个类
+class MyFirstChildClass : MyfirstSwiftClass{
+    
+    // 定义一个子类的成员变量
+    var m_nChildMember : Int
+    init( nChildMember : Int, sChildString:String){
+        
+        self.m_nChildMember = nChildMember          // 初始化子类的成员变量
+        
+        super.init(sName: sChildString, nMember: nChildMember) // 调用父类的成员初始化函数
+        m_nChildMember += 7                                  // 可以直接调用成员变量直接赋值
+        
+    }
+    
+    func getAChildString() -> String{
+        m_nChildMember += 1
+        return "this is return child data"
+    }
+    
+    // 重载父类的函数 需要用 override 标注重载函数
+    override func getSimpleString() -> String {
+        return "this is return child data e e e e e "
+    }
+}
+
+//------------阅读到十二页
+
+
+
 
 
 
