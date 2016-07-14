@@ -313,15 +313,28 @@ var t_myfirstclass = MyfirstSwiftClass(sName: "my class", nMember: 6)
 
 // 创建一个类并且继承另一个类
 class MyFirstChildClass : MyfirstSwiftClass{
+
+    
     
     // 定义一个子类的成员变量
     var m_nChildMember : Int
+    
+    
     init( nChildMember : Int, sChildString:String){
         
         self.m_nChildMember = nChildMember          // 初始化子类的成员变量
         
         super.init(sName: sChildString, nMember: nChildMember) // 调用父类的成员初始化函数
         m_nChildMember += 7                                  // 可以直接调用成员变量直接赋值
+        
+    }
+    
+    // 析构函数
+    deinit {
+        m_nSecondMember =  0       // 定义的时候就初始化了
+        m_nFirstMember  = 0
+        m_sName = ""
+        m_nChildMember = 0
         
     }
     
@@ -336,7 +349,43 @@ class MyFirstChildClass : MyfirstSwiftClass{
     }
 }
 
-//------------阅读到十二页
+//-------------------------------------
+// 定义一个有set 和 get 属性的成员函数
+
+class OneClassHasGetAndSetFun{
+    
+    var nOneIntTypeValue = 0
+    init( InValue : Int ) {
+        nOneIntTypeValue = InValue
+        print("## Init data = \(InValue)")
+    }
+    
+    
+    // 定义函数
+    var GetAndSetFun : Int {
+        get {
+            print(" ### Get Fund")
+            return nOneIntTypeValue + 3
+            
+        }
+        
+        set {
+            print(" ### Set Fund new value = \(newValue)")
+            nOneIntTypeValue = newValue + 1
+        }
+    }
+}
+
+// 类的实例化
+print("step : 1")
+var OneClassOut =  OneClassHasGetAndSetFun( InValue:3)
+print("step : 2")
+OneClassOut.GetAndSetFun = 5
+print("step : 3")
+var Newdata = OneClassOut.GetAndSetFun
+
+print(" \n=======\n")
+print(" on get class out = \(Newdata)")
 
 
 
