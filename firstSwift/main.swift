@@ -360,8 +360,13 @@ class OneClassHasGetAndSetFun{
         print("## Init data = \(InValue)")
     }
     
+    var description: String{
+        print("set  ing ...")
+        return "thid id string"
+    }
     
-    // 定义函数
+    
+    // 这里更应该说定义一个变量，变量值类型为 int
     var GetAndSetFun : Int {
         get {
             print(" ### Get Fund")
@@ -373,8 +378,21 @@ class OneClassHasGetAndSetFun{
             print(" ### Set Fund new value = \(newValue)")
             nOneIntTypeValue = newValue + 1
         }
+        
+        // 这里 willset，DidSet和 get，set不能同时使用，为什么暂时不知道
+      // willSet {
+      //      print(" ### WillSet")
+       // }
+        //didSet{
+         //   print(" ### DidSet")
+        //}
+        
+        //
+        
     }
 }
+
+
 
 // 类的实例化
 print("step : 1")
@@ -383,9 +401,39 @@ print("step : 2")
 OneClassOut.GetAndSetFun = 5
 print("step : 3")
 var Newdata = OneClassOut.GetAndSetFun
+print("step : 4")
+print("set string value")
+var newString = OneClassOut.description
+print("set string value over")
+print(" print stirng [\(newString)]")
 
 print(" \n=======\n")
 print(" on get class out = \(Newdata)")
+
+
+// 类变量的 willset和didset的使用
+class  ClassHaveWillSetAndDidSet{
+    var  m_nThisIsaIntValue : Int = 0
+}
+
+
+//----------------------------------------------------------------
+// ? ! 测试
+let strSomeOrNone : String = "1234567890";
+
+func printHashValue ( strSome: String?) {
+    
+    // ! 拆包
+    let hashStrSomeOrNome = strSome!.hashValue;
+    print(" hash data = \(hashStrSomeOrNome)");
+    
+    
+}
+
+printHashValue(strSomeOrNone);
+var strNil : String
+strNil = "2222";
+printHashValue(strNil);
 
 
 
